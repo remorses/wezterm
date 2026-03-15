@@ -1,6 +1,7 @@
 name: fedora39_tag
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - "20*"

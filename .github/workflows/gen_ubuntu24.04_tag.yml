@@ -1,6 +1,7 @@
 name: ubuntu24.04_tag
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - "20*"
