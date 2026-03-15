@@ -109,23 +109,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
         run: "bash ci/retry.sh gh release upload --clobber $(ci/tag-name.sh) WezTerm-*.zip WezTerm-*.exe *.sha256"
-      - name: "Checkout winget-pkgs"
-        uses: actions/checkout@v4
-        with:
-          repository: "wez/winget-pkgs"
-          path: "winget-pkgs"
-          token: "${{ secrets.GH_PAT }}"
-      - name: "Setup email for winget repo"
-        shell: bash
-        run: "cd winget-pkgs && git config user.email wez@wezfurlong.org"
-      - name: "Setup name for winget repo"
-        shell: bash
-        run: "cd winget-pkgs && git config user.name 'Wez Furlong'"
-      - name: "Create winget manifest and push to fork"
-        shell: bash
-        run: "bash ci/make-winget-pr.sh winget-pkgs WezTerm-*.exe"
-      - name: "Submit PR"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
-        shell: bash
-        run: 'cd winget-pkgs && gh pr create --fill --body "PR automatically created by release automation in the wezterm repo"'
+

@@ -103,20 +103,6 @@ jobs:
     steps:
       - name: "checkout repo"
         uses: actions/checkout@v4
-      - name: "Checkout homebrew tap"
-        uses: actions/checkout@v4
-        with:
-          repository: "wez/homebrew-wezterm"
-          path: "homebrew-wezterm"
-          token: "${{ secrets.GH_PAT }}"
-      - name: "Update homebrew tap formula"
-        shell: bash
-        run: "cp wezterm.rb homebrew-wezterm/Casks/wezterm.rb"
-      - name: "Commit homebrew tap changes"
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Automated update to match latest tag"
-          repository: "homebrew-wezterm"
       - name: "Download artifact"
         uses: actions/download-artifact@v4
         with:
