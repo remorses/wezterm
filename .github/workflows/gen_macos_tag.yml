@@ -77,12 +77,6 @@ jobs:
         shell: bash
         run: "cargo nextest run --all --no-fail-fast --target=x86_64-apple-darwin"
       - name: "Package"
-        env:
-          MACOS_APPLEID: ${{ secrets.MACOS_APPLEID }}
-          MACOS_APP_PW: ${{ secrets.MACOS_APP_PW }}
-          MACOS_CERT: ${{ secrets.MACOS_CERT }}
-          MACOS_CERT_PW: ${{ secrets.MACOS_CERT_PW }}
-          MACOS_TEAM_ID: ${{ secrets.MACOS_TEAM_ID }}
         shell: bash
         run: "bash ci/deploy.sh"
       - name: "Upload artifact"
