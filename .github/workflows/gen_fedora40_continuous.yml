@@ -1,9 +1,9 @@
 name: fedora40_continuous
 
 on:
-  schedule:
-    - cron: "10 3 * * *"
-  push:
+  # schedule:
+    # - cron: "10 3 * * *"
+  # push:
     branches:
       - main
     paths:
@@ -117,7 +117,7 @@ jobs:
   upload:
     runs-on: ubuntu-latest
     needs: build
-    if: github.repository == 'wezterm/wezterm'
+    if: true
     permissions:
       contents: write
       pages: write
