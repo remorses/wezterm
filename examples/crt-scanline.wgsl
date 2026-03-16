@@ -1,3 +1,4 @@
+// https://github.com/gumboblue/wezterm/blob/feature/custom-postprocess-shaders/examples/crt-scanline.wgsl
 // CRT / Scanline post-processing shader for wezterm.
 //
 // Designed to be subtle enough for daily use while giving the terminal
@@ -128,10 +129,6 @@ fn fs_postprocess(in: VertexOutput) -> @location(0) vec4<f32> {
     // --- Scanlines ---
     // Multiply by the scanline mask to add horizontal dark bands.
     color *= scanline(uv, pp.time);
-
-    // --- Vignette ---
-    // Darken toward the edges of the screen.
-    color *= vignette(uv);
 
     // Preserve fully opaque alpha so compositing is unaffected.
     return vec4<f32>(color, 1.0);
